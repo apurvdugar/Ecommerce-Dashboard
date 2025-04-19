@@ -1,6 +1,7 @@
 import React from "react";
 import Layout from "../components/layout/Layout";
 import { ArrowRight, TrendingUp, Zap, ShieldCheck } from 'lucide-react';
+import ProductGrid from "../components/ProductGrid";
 
 function HomePage() {
   return (
