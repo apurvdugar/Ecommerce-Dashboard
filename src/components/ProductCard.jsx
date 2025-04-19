@@ -1,5 +1,5 @@
 import React from "react";
-import { Heart, ShoppingCart, Star } from "lucide-react";
+import { Heart, IndianRupee, Star } from "lucide-react";
 import { useCart } from "../context/CartContext";
 import { Button } from "@radix-ui/themes";
 
@@ -76,7 +76,7 @@ const ProductCard = ({ product }) => {
 
           <div className="flex items-center justify-between">
             <span className="text-blue-700 font-semibold">
-              ${product.price.toFixed(2)}
+              Rs. {product.price.toFixed(0)}
             </span>
             <Button
               size="sm"

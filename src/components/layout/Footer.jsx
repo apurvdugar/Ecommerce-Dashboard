@@ -1,5 +1,6 @@
 import React from 'react'
 import { Mail, Copyright} from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 function Footer() {
   return (
@@ -15,25 +16,25 @@ function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-4">Shop</h3>
             <ul className="space-y-2">
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">All Products</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Featured Items</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">New Arrivals</a></li>
+              <li><Link to="/products" className="text-gray-400 hover:text-white transition-colors">All Products</Link></li>
+              <li><Link to="/" className="text-gray-400 hover:text-white transition-colors">Featured Items</Link></li>
+              <li><Link to="/" className="text-gray-400 hover:text-white transition-colors">New Arrivals</Link></li>
             </ul>
           </div>
           
           <div>
             <h3 className="text-lg font-semibold mb-4">Customer Service</h3>
             <ul className="space-y-2">
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Shipping Policy</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Returns & Refunds</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+              <li><Link to="#" className="text-gray-400 hover:text-white transition-colors">Shipping Policy</Link></li>
+              <li><Link to="#" className="text-gray-400 hover:text-white transition-colors">Returns & Refunds</Link></li>
+              <li><Link to="#" className="text-gray-400 hover:text-white transition-colors">Privacy Policy</Link></li>
             </ul>
           </div>
           
           <div>
             <h3 className="text-lg font-semibold mb-4">Contact</h3>
             <ul className="space-y-3">
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Contact Us</a></li>
+              <li><Link to="#" className="text-gray-400 hover:text-white transition-colors">Contact Us</Link></li>
               <li className="flex items-center">
                 <Mail size={18} className="mr-2 text-blue-400" />
                 <span className="text-gray-400">support@ecomdash.com</span>
