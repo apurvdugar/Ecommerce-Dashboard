@@ -104,26 +104,6 @@ function HomePage() {
         </div>
       </section>
       
-      {/* Call to Action */}
-      <section className="bg-blue-50 py-16">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Join Our Community</h2>
-          <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-            Subscribe to our newsletter and be the first to know about new products, 
-            exclusive offers, and upcoming sales.
-          </p>
-          <div className="max-w-md mx-auto flex">
-            <input 
-              type="email" 
-              placeholder="Your email address" 
-              className="flex-1 px-4 py-3 rounded-l-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-            />
-            <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-r-md transition-colors">
-              Subscribe
-            </button>
-          </div>
-        </div>
-      </section>
       
       {/* New Arrivals */}
       <section className="py-12">
