@@ -2,12 +2,15 @@ import React from "react";
 import Layout from "../components/layout/Layout";
 import { ArrowRight, TrendingUp, Zap, ShieldCheck } from 'lucide-react';
 import ProductGrid from "../components/ProductGrid";
+import { products } from "../data/products";
 
 function HomePage() {
+  const [isLoading, setIsLoading] = React.useState(false);
+  const featuredProducts = products.slice(0, 4);
+  const newArrivals = products.slice(4, 8);
+
   return (
     <>
-      <div>HomePage</div>
-      <Layout>
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-blue-600 to-blue-400 text-white py-16 md:py-24">
         <div className="container mx-auto px-4">
@@ -139,7 +142,6 @@ function HomePage() {
           <ProductGrid products={newArrivals} isLoading={isLoading} />
         </div>
       </section>
-    </Layout>
     </>
   );
 }

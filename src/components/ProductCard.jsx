@@ -1,7 +1,7 @@
 import React from "react";
 import { Heart, ShoppingCart, Star } from "lucide-react";
 import { useCart } from "../context/CartContext";
-import Button from "./ui/Button";
+import { Button } from "@radix-ui/themes";
 
 const ProductCard = ({ product }) => {
   const { addToCart } = useCart();
@@ -83,7 +83,6 @@ const ProductCard = ({ product }) => {
               variant="primary"
               className="opacity-0 group-hover:opacity-100 transition-opacity duration-300"
               onClick={handleAddToCart}
-              leftIcon={<ShoppingCart className="h-4 w-4" />}
             >
               Add
             </Button>
