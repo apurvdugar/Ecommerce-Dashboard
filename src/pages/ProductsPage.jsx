@@ -107,15 +107,6 @@ const ProductsPage = () => {
               <option value="nameDesc">Name: Z to A</option>
               <option value="rating">Top Rated</option>
             </select>
-
-            <div className="hidden sm:flex space-x-1 border border-gray-300 rounded-md overflow-hidden">
-              <button className="p-2 bg-blue-600 text-white">
-                <Grid3X3 className="h-5 w-5" />
-              </button>
-              <button className="p-2 bg-white hover:bg-gray-50">
-                <LayoutList className="h-5 w-5" />
-              </button>
-            </div>
           </div>
         </div>
       </div>

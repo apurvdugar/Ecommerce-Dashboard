@@ -2,6 +2,7 @@ import React from "react";
 import { Heart, IndianRupee, Star } from "lucide-react";
 import { useCart } from "../context/CartContext";
 import { Button } from "@radix-ui/themes";
+import { Link } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
   const { addToCart } = useCart();
@@ -24,7 +25,7 @@ const ProductCard = ({ product }) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <a href={`/products/${product.id}`} className="block">
+      <Link to={`/products/${product.id}`} className="block">
         <div className="relative overflow-hidden rounded-t-lg h-60">
           <img
             src={product.image}
@@ -88,7 +89,7 @@ const ProductCard = ({ product }) => {
             </Button>
           </div>
         </div>
-      </a>
+      </Link>
     </div>
   );
 };

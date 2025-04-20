@@ -5,15 +5,16 @@ import { useCart } from '../context/CartContext';
 import { products } from '../data/products';
 import ProductGrid from '../components/ProductGrid';
 import { Button } from '@radix-ui/themes';
+import { useParams } from 'react-router-dom';
 
 
-const ProductDetailPage = ({ productId = '1' }) => {
+const ProductDetailPage = () => {
   const { addToCart } = useCart();
   const [quantity, setQuantity] = useState(1);
   const [activeTab, setActiveTab] = useState('description');
   const [isFavorite, setIsFavorite] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  
+  const productId = window.location.pathname.split('/').pop(); // Get product ID from URL
   const product = products.find(p => p.id === productId);
   const relatedProducts = products.filter(p => p.category === product?.category && p.id !== productId).slice(0, 4);
 
@@ -136,9 +137,7 @@ const ProductDetailPage = ({ productId = '1' }) => {
                 
                 <Button
                   variant="primary"
-                  fullWidth
                   onClick={() => product && addToCart(product.id, quantity)}
-                  leftIcon={<ShoppingCart className="h-5 w-5" />}
                   disabled={!product?.stock}
                 >
                   Add to Cart

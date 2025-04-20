@@ -20,7 +20,7 @@ export const CartProvider = ({ children }) => {
   }, [items]);
 
   const getProduct = (productId) => {
-    return mockProducts.find((product) => product.id === productId);
+    return products.find((product) => product.id === productId);
   };
 
   const addToCart = (productId, quantity = 1) => {

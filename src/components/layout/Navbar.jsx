@@ -19,7 +19,7 @@ function navbar() {
           </div>
           <div className="hidden md:flex items-center space-x-6">
             <Heart size={20} />
-            <ShoppingCart size={20} />
+            <Link to = "/cart"><ShoppingCart size={20} /></Link>
             <CircleUserRound size={28} />
           </div>
           <div className="md:hidden flex items-center">
