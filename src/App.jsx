@@ -6,6 +6,7 @@ import HomePage from './pages/HomePage'
 import ProductsPage from './pages/ProductsPage';
 import ProductDetailPage from './pages/ProductDetailPage';
 import CartPage from './pages/CartPage';
+import LoginPage from './pages/LoginPage';
 
 
 function App() {
@@ -26,6 +27,9 @@ function App() {
           </Route>
           <Route path='/cart' element={<Layout />}>
             <Route index element={<CartPage />}></Route>
+          </Route>
+          <Route path='/login' element={<Layout />}>
+            <Route index element={<LoginPage />}></Route>
           </Route>
         </Routes>
       </BrowserRouter>

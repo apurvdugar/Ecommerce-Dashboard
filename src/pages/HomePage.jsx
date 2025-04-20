@@ -3,6 +3,7 @@ import Layout from "../components/layout/Layout";
 import { ArrowRight, TrendingUp, Zap, ShieldCheck } from 'lucide-react';
 import ProductGrid from "../components/ProductGrid";
 import { products } from "../data/products";
+import { Link } from "react-router-dom";
 
 function HomePage() {
   const [isLoading, setIsLoading] = React.useState(false);
@@ -12,7 +13,7 @@ function HomePage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-blue-400 text-white py-16 md:py-24">
+      <section className="bg-gradient-to-r from-gray-600 to-gray-700 text-white py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center">
             <div className="md:w-1/2 mb-8 md:mb-0">
@@ -23,26 +24,19 @@ function HomePage() {
                 Shop the latest trends with confidence. Quality products, competitive prices, and excellent service.
               </p>
               <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
-                <a 
-                  href="/products" 
-                  className="bg-white text-blue-600 hover:bg-blue-50 px-6 py-3 rounded-md font-medium transition-colors inline-flex items-center"
+                <Link to="/products" 
+                  className="bg-white text-black hover:bg-blue-50 px-6 py-3 rounded-md font-medium transition-colors inline-flex items-center"
                 >
                   Shop Now
                   <ArrowRight className="ml-2 h-5 w-5" />
-                </a>
-                <a 
-                  href="/deals" 
-                  className="bg-transparent hover:bg-blue-700 border border-white px-6 py-3 rounded-md font-medium transition-colors"
-                >
-                  View Deals
-                </a>
+                </Link>
               </div>
             </div>
             <div className="md:w-1/2 flex justify-center">
               <img
                 src="https://images.pexels.com/photos/5632402/pexels-photo-5632402.jpeg?auto=compress&cs=tinysrgb&w=800"
                 alt="Shopping Experience"
-                className="w-full max-w-md rounded-lg shadow-xl transform -rotate-3 hover:rotate-0 transition-transform duration-500"
+                className="w-full max-w-md rounded-lg shadow-xl "
               />
             </div>
           </div>
@@ -91,13 +85,12 @@ function HomePage() {
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center mb-8">
             <h2 className="text-2xl font-bold text-gray-900">Featured Products</h2>
-            <a 
-              href="/products" 
+            <Link to="/products" 
               className="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center"
             >
               View All
               <ArrowRight className="ml-1 h-4 w-4" />
-            </a>
+            </Link>
           </div>
           
           <ProductGrid products={featuredProducts} isLoading={isLoading} />
@@ -110,13 +103,12 @@ function HomePage() {
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center mb-8">
             <h2 className="text-2xl font-bold text-gray-900">New Arrivals</h2>
-            <a 
-              href="/products" 
+            <Link to="/products" 
               className="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center"
             >
               View All
               <ArrowRight className="ml-1 h-4 w-4" />
-            </a>
+            </Link>
           </div>
           
           <ProductGrid products={newArrivals} isLoading={isLoading} />
