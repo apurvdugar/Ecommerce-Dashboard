@@ -35,7 +35,7 @@ function Navbar() {
           <div className="container mx-auto px-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center">
-                <Link to="/" className="text-xl font-bold text-black mr-8">ShopDash</Link>
+                <Link to="/" className="text-xl font-bold text-black mr-8">EcomDash</Link>
                 <nav className="hidden md:flex space-x-6">
                   <Link to="/" className="text-black hover:underline hover:scale-110 ">Home</Link>
                   <Link to="/products" className="text-black hover:underline hover:scale-110">Products</Link>
