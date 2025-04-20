@@ -12,7 +12,7 @@ function navbar() {
             <Link to="/" className="text-xl font-bold text-blue-300">EcomDash</Link>
             <div className="hidden md:flex space-x-4">
               <Link to="/" className="text-gray-700 hover:text-gray-900">Home</Link>
-              <Link to="#" className="text-gray-700 hover:text-gray-900">Products</Link>
+              <Link to="/products" className="text-gray-700 hover:text-gray-900">Products</Link>
               <Link to="#" className="text-gray-700 hover:text-gray-900">About</Link>
               <Link to="#" className="text-gray-700 hover:text-gray-900">Contact</Link>
             </div>
