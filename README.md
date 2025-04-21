@@ -56,7 +56,3 @@ ecommerce-dashboard/
 ├── vite.config.js        # Vite configuration
 └── README.md             # Project documentation
 ```
-
-## License
-
-This project is licensed under the MIT License.

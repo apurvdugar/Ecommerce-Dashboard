@@ -8,6 +8,7 @@ import ProductDetailPage from './pages/ProductDetailPage';
 import CartPage from './pages/CartPage';
 import LoginPage from './pages/LoginPage';
 import ProfilePage from './pages/ProfilePage';
+import CheckoutPage from './pages/CheckoutPage';
 
 
 function App() {
@@ -34,6 +35,9 @@ function App() {
           </Route>
           <Route path='/profile' element={<Layout />}>
             <Route index element={<ProfilePage />}></Route>
+          </Route>
+          <Route path='/checkout' element={<Layout />}>
+            <Route index element={<CheckoutPage />}></Route>
           </Route>
         </Routes>
       </BrowserRouter>

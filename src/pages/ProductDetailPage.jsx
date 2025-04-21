@@ -145,8 +145,7 @@ const ProductDetailPage = () => {
                   </button>
                   <span className="px-4 py-2">{quantity}</span>
                   <button
-                    onClick={() => setQuantity(Math.min(product?.stock || 10, quantity + 1))}
-                    disabled={quantity >= (product?.stock || 10)}
+                    onClick={() => setQuantity(Math.min(product?.rate.count || 10, quantity + 1))}
                     className="p-2 text-gray-600 hover:bg-gray-100 disabled:opacity-50"
                   >
                     <Plus className="h-4 w-4" />
@@ -156,7 +155,6 @@ const ProductDetailPage = () => {
                 <Button
                   variant="primary"
                   onClick={() => product && addToCart(product.id, quantity)}
-                  disabled={!product?.stock}
                 >
                   Add to Cart
                 </Button>
