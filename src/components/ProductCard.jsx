@@ -1,5 +1,5 @@
 import React from "react";
-import { Heart, IndianRupee, Star } from "lucide-react";
+import { Heart, Star } from "lucide-react";
 import { useCart } from "../context/CartContext";
 import { Button } from "@radix-ui/themes";
 import { Link } from "react-router-dom";
@@ -29,8 +29,8 @@ const ProductCard = ({ product }) => {
         <div className="relative overflow-hidden rounded-t-lg h-60">
           <img
             src={product.image}
-            alt={product.name}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            alt={product.title}
+            className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110"
           />
           <div
             className={`absolute top-2 right-2 p-2 bg-white rounded-full shadow-sm cursor-pointer transition-opacity duration-300 ${
@@ -44,11 +44,6 @@ const ProductCard = ({ product }) => {
               }`}
             />
           </div>
-          {product.stock < 5 && (
-            <div className="absolute top-2 left-2 bg-amber-500 text-white text-xs px-2 py-1 rounded">
-              Low Stock: {product.stock} left
-            </div>
-          )}
         </div>
 
         <div className="p-4">
@@ -59,17 +54,19 @@ const ProductCard = ({ product }) => {
                 <Star
                   key={i}
                   className={`h-4 w-4 ${
-                    i < Math.floor(product.rating)
+                    i < Math.floor(product.rating?.rate)
                       ? "fill-amber-500"
                       : "fill-gray-200"
                   }`}
                 />
               ))}
-            <span className="text-gray-600 text-xs ml-1">{product.rating}</span>
+            <span className="text-gray-600 text-xs ml-1">
+              {product.rating?.rate}
+            </span>
           </div>
 
           <h3 className="font-medium text-gray-900 mb-1 truncate">
-            {product.name}
+            {product.title}
           </h3>
           <p className="text-gray-500 text-sm mb-2 line-clamp-2">
             {product.description}
@@ -77,7 +74,7 @@ const ProductCard = ({ product }) => {
 
           <div className="flex items-center justify-between">
             <span className="text-blue-700 font-semibold">
-              Rs. {product.price.toFixed(0)}
+              Rs. {product.price}
             </span>
             <Button
               size="sm"

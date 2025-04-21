@@ -2,29 +2,47 @@ import React, { useState, useEffect } from 'react';
 import { ChevronDown, ChevronUp, Heart, Minus, Plus, ShoppingCart, Star, Truck } from 'lucide-react';
 import Layout from '../components/layout/Layout';
 import { useCart } from '../context/CartContext';
-import { products } from '../data/products';
 import ProductGrid from '../components/ProductGrid';
 import { Button } from '@radix-ui/themes';
 import { useParams } from 'react-router-dom';
 
 
 const ProductDetailPage = () => {
+  const { productId } = useParams(); 
   const { addToCart } = useCart();
+  const [product, setProduct] = useState(null);
+  const [relatedProducts, setRelatedProducts] = useState([]);
   const [quantity, setQuantity] = useState(1);
   const [activeTab, setActiveTab] = useState('description');
   const [isFavorite, setIsFavorite] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const productId = window.location.pathname.split('/').pop(); // Get product ID from URL
-  const product = products.find(p => p.id === productId);
-  const relatedProducts = products.filter(p => p.category === product?.category && p.id !== productId).slice(0, 4);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 1000);
-    
-    return () => clearTimeout(timer);
-  }, []);
+    const fetchProductDetails = async () => {
+      try {
+        setIsLoading(true);
+
+        // Fetching the product details
+        const response = await fetch(`https://fakestoreapi.com/products/${productId}`);
+        const productData = await response.json();
+        setProduct(productData);
+
+        // Fetching related products
+        const relatedResponse = await fetch('https://fakestoreapi.com/products');
+        const allProducts = await relatedResponse.json();
+        const related = allProducts.filter(
+          (p) => p.category === productData.category && p.id !== productData.id
+        );
+        setRelatedProducts(related.slice(0, 4)); // Limit to 4 related products
+      } catch (error) {
+        console.error('Error fetching product details:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchProductDetails();
+  }, [productId]);
 
   if (!product && !isLoading) {
     return (
@@ -89,11 +107,11 @@ const ProductDetailPage = () => {
                   {Array(5).fill(0).map((_, i) => (
                     <Star 
                       key={i} 
-                      className={`h-5 w-5 ${i < Math.floor(product?.rating || 0) ? 'fill-amber-500' : 'fill-gray-200'}`} 
+                      className={`h-5 w-5 ${i < Math.floor(product?.rating?.rate || 0) ? 'fill-amber-500' : 'fill-gray-200'}`} 
                     />
                   ))}
                 </div>
-                <span className="text-gray-600 text-sm">{product?.rating} Rating</span>
+                <span className="text-gray-600 text-sm">{product?.rating?.rate} Rating</span>
               </div>
               
               <div className="text-2xl font-bold text-blue-700 mb-6">
@@ -106,13 +124,13 @@ const ProductDetailPage = () => {
               
               <div className="mb-6">
                 <div className="flex items-center text-sm text-gray-600 mb-2">
-                  <div className={`w-3 h-3 rounded-full mr-2 ${product?.stock > 0 ? 'bg-green-500' : 'bg-red-500'}`}></div>
-                  <span>{product?.stock > 0 ? `In Stock (${product?.stock} available)` : 'Out of Stock'}</span>
+                  <div className={`w-3 h-3 rounded-full mr-2 ${product?.rating.count > 0 ? 'bg-green-500' : 'bg-red-500'}`}></div>
+                  <span>{product?.rating.count > 0 ? `In Stock (${product?.rating.count} available)` : 'Out of Stock'}</span>
                 </div>
                 
                 <div className="flex items-center text-sm text-gray-600">
                   <Truck className="h-4 w-4 mr-2" />
-                  <span>Free shipping on orders over $50</span>
+                  <span>Free shipping on orders over Rs. 500</span>
                 </div>
               </div>
               

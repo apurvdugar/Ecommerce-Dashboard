@@ -1,15 +1,32 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Layout from "../components/layout/Layout";
 import { ArrowRight, TrendingUp, Zap, ShieldCheck } from 'lucide-react';
 import ProductGrid from "../components/ProductGrid";
-import { products } from "../data/products";
 import { Link } from "react-router-dom";
 
 function HomePage() {
   const [isLoading, setIsLoading] = React.useState(false);
-  const featuredProducts = products.slice(0, 4);
-  const newArrivals = products.slice(4, 8);
+  const [featuredProducts, setFeaturedProducts] = useState([]);
+  const [newArrivals, setNewArrivals] = useState([]);
 
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch("https://fakestoreapi.com/products");
+        const data = await response.json();
+
+        // Split products into featured and new arrivals
+        setFeaturedProducts(data.slice(0, 4)); // First 4 products as featured
+        setNewArrivals(data.slice(4, 8)); // Next 4 products as new arrivals
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
   return (
     <>
       {/* Hero Section */}
