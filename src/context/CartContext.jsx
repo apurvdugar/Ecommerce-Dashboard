@@ -1,10 +1,25 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
-import { products } from "../data/products";
 
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [items, setItems] = useState([]);
+  const [products, setProducts] = useState([]);
+
+  // Fetch all products from the API on mount
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch("https://fakestoreapi.com/products");
+        const data = await response.json();
+        setProducts(data);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+
+    fetchProducts();
+  }, []);
 
   useEffect(() => {
     // Load cart from localStorage
@@ -19,32 +34,26 @@ export const CartProvider = ({ children }) => {
     localStorage.setItem("cart", JSON.stringify(items));
   }, [items]);
 
-  const getProduct = (productId) => {
-    return products.find((product) => product.id === productId);
-  };
-
   const addToCart = (productId, quantity = 1) => {
     setItems((prevItems) => {
-      const existingItem = prevItems.find(
-        (item) => item.productId === productId
-      );
+      const existingItem = prevItems.find((item) => item.productId === productId);
 
       if (existingItem) {
+        // Update quantity if the product already exists in the cart
         return prevItems.map((item) =>
           item.productId === productId
             ? { ...item, quantity: item.quantity + quantity }
             : item
         );
       } else {
+        // Add new product to the cart
         return [...prevItems, { productId, quantity }];
       }
     });
   };
 
   const removeFromCart = (productId) => {
-    setItems((prevItems) =>
-      prevItems.filter((item) => item.productId !== productId)
-    );
+    setItems((prevItems) => prevItems.filter((item) => item.productId !== productId));
   };
 
   const updateQuantity = (productId, quantity) => {
@@ -75,6 +84,11 @@ export const CartProvider = ({ children }) => {
     return items.reduce((count, item) => count + item.quantity, 0);
   };
 
+  const getProduct = (productId) => {
+    // Fetch product details from the fetched products array
+    return products.find((product) => product.id === productId);
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -95,7 +109,7 @@ export const CartProvider = ({ children }) => {
 
 export const useCart = () => {
   const context = useContext(CartContext);
-  if (context === undefined) {
+  if (!context) {
     throw new Error("useCart must be used within a CartProvider");
   }
   return context;

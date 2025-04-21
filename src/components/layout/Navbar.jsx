@@ -44,9 +44,9 @@ function Navbar() {
 
               <div className="hidden md:flex items-center space-x-4">
                 <div className="relative">
-                  <input 
-                    type="text" 
-                    placeholder="Search..." 
+                  <input
+                    type="text"
+                    placeholder="Search..."
                     className="py-2 pl-10 pr-4 w-64 rounded-full border text-black border-black focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                   />
                   <Search className="absolute left-3 top-2.5 h-5 w-5 text-black" />
@@ -67,7 +67,7 @@ function Navbar() {
 
                 {isAuthenticated ? (
                   <div className="relative">
-                    <button 
+                    <button
                       onClick={() => setIsProfileOpen(!isProfileOpen)}
                       className="flex items-center focus:outline-none"
                     >
@@ -98,7 +98,7 @@ function Navbar() {
                 )}
               </div>
 
-              <button 
+              <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="md:hidden p-2 text-gray-700 focus:outline-none"
               >
