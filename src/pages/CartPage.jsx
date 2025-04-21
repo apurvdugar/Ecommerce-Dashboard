@@ -3,6 +3,7 @@ import { ShoppingCart } from "lucide-react";
 import { useCart } from "../context/CartContext";
 import CartItem from "../components/CartItem";
 import { Button } from "@radix-ui/themes";
+import { Link } from "react-router-dom";
 
 const CartPage = () => {
   const { items, getCartTotal, clearCart } = useCart();
@@ -46,9 +47,11 @@ const CartPage = () => {
               </div>
 
               <div className="p-4 bg-gray-50 flex justify-between items-center">
-                <Button variant="outline" onClick={() => window.location.href = "/products"}>
-                  Continue Shopping
-                </Button>
+                <Link to="/products" className="text-gray-600 hover:text-gray-900">
+                  <Button variant="outline">
+                    Continue Shopping
+                  </Button>
+                </Link>
 
                 <Button variant="ghost" onClick={clearCart}>
                   Clear Cart
