@@ -8,7 +8,7 @@ EcomDash is a modern and responsive ecommerce dashboard built with React, Vite, 
 - **Product Details**: View detailed information about each product, including ratings, stock, and descriptions.
 - **Cart Management**: Add, update, and remove items from the cart with real-time price calculations.
 - **User Authentication**: Log in and sign up with mock authentication.
-- **Responsive Design**: Fully responsive layout for desktop and mobile devices.
+- **User Profile**: View and edit user details with a clean and responsive design.
 - **Modern UI**: Built with TailwindCSS for a clean and modern design.
 
 ## Tech Stack
@@ -18,6 +18,7 @@ EcomDash is a modern and responsive ecommerce dashboard built with React, Vite, 
 - **Build Tool**: Vite
 - **Icons**: Lucide React
 - **State Management**: Context API (AuthContext, CartContext)
+- **API**: Mock API or REST API for product[Fake Store API] and user data
 
 ## Installation
 
@@ -27,13 +28,17 @@ EcomDash is a modern and responsive ecommerce dashboard built with React, Vite, 
    cd ecommerce-dashboard
    ```
 2. Install dependencies:
+    ```bash
     npm install
-
+    ```
 3. Start the development server:
+    ```bash
     npm run dev
-
-4. Open your browser and navigate to:
+    ```
+4. Open your browser and navigate to: 
+    ```bash
     http://localhost:5173
+    ```
 
 ## Project Structure
 ```
@@ -41,13 +46,16 @@ ecommerce-dashboard/
 ├── src/
 │   ├── components/       # Reusable components (Navbar, Footer, ProductCard, etc.)
 │   ├── context/          # Context API for Auth and Cart
-│   ├── data/             # Mock data for products
-│   ├── pages/            # Application pages (HomePage, ProductsPage, etc.)
+│   ├── pages/            # Application pages (HomePage, ProductsPage, ProfilePage, etc.)
 │   ├── styles/           # Global styles
-│   ├── [App.jsx](http://_vscodecontentref_/1)           # Main application component
-│   ├── [main.jsx](http://_vscodecontentref_/2)          # Entry point
+│   ├── App.jsx           # Main application component
+│   ├── main.jsx          # Entry point
 ├── public/               # Static assets
-├── [package.json](http://_vscodecontentref_/3)          # Project dependencies and scripts
-├── [vite.config.js](http://_vscodecontentref_/4)        # Vite configuration
-└── [README.md](http://_vscodecontentref_/5)             # Project documentation
+├── package.json          # Project dependencies and scripts
+├── vite.config.js        # Vite configuration
+└── README.md             # Project documentation
 ```
+
+## License
+
+This project is licensed under the MIT License.
