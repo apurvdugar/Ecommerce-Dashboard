@@ -9,6 +9,7 @@ EcomDash is a modern and responsive ecommerce dashboard built with React, Vite, 
 - **Cart Management**: Add, update, and remove items from the cart with real-time price calculations.
 - **User Authentication**: Log in and sign up with mock authentication.
 - **User Profile**: View and edit user details with a clean and responsive design.
+- **Responsive Design**: Fully responsive layout for desktop and mobile devices.
 - **Modern UI**: Built with TailwindCSS for a clean and modern design.
 
 ## Tech Stack

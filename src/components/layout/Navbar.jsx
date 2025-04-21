@@ -97,12 +97,78 @@ function Navbar() {
 
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="md:hidden p-2 text-gray-700 focus:outline-none"
+                className="md:hidden p-2 text-black focus:outline-none"
               >
                 {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
               </button>
             </div>
           </div>
+
+          {isMenuOpen && (
+        <div className="md:hidden bg-white shadow-lg py-4 px-4 absolute top-full left-0 right-0">
+          <div className="flex items-center mb-4">
+            <input 
+              type="text" 
+              placeholder="Search..." 
+              className="py-2 pl-10 pr-4 w-full rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            />
+            <Search className="absolute left-7 top-6.5 h-5 w-5 text-gray-400" />
+          </div>
+          
+          <nav className="space-y-3">
+            <Link to="/" className="block text-gray-700 hover:text-blue-600 ">Home</Link>
+            <Link to="/products" className="block text-gray-700 hover:text-blue-600 ">Products</Link>
+          </nav>
+          
+          <div className="mt-4 pt-4 border-t border-gray-200 space-y-4">
+            <Link to="/wishlist" className="flex items-center text-gray-700 hover:text-blue-600">
+              <Heart className="h-5 w-5 mr-1" />
+              <span>Wishlist</span>
+            </Link>
+            
+            <Link to="/cart" className="flex items-center text-gray-700 hover:text-blue-600  relative">
+              <ShoppingCart className="h-5 w-5 mr-1" />
+              <span>Cart</span>
+              {cartCount > 0 && (
+                <span className="ml-1 bg-blue-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                  {cartCount}
+                </span>
+              )}
+            </Link>
+          </div>
+          
+          {isAuthenticated ? (
+            <div className="mt-4 pt-4 border-t border-gray-200">
+              <div className="flex items-center mb-4">
+                <img 
+                  src={user?.avatar} 
+                  alt={user?.name} 
+                  className="h-10 w-10 rounded-full object-cover border-2 border-blue-600 mr-3"
+                />
+                <div>
+                  <p className="font-medium">{user?.name}</p>
+                  <p className="text-sm text-gray-500">{user?.email}</p>
+                </div>
+              </div>
+              
+              <div className="space-y-3">
+                <Link href="/profile" className="block text-gray-700 hover:text-blue-600">
+                  Profile
+                </Link>
+                <button onClick={logout} className="block w-full text-left text-gray-700 hover:text-blue-600">
+                  Logout
+                </button>
+              </div>
+            </div>
+          ) : (
+            <div className="mt-4 pt-4 border-t border-gray-200">
+              <Link tp="/login" className="block text-center py-2 px-4 rounded-md bg-blue-600 text-white hover:bg-blue-700">
+                Sign In
+              </Link>
+            </div>
+          )}
+        </div>
+      )}
         </header>
       </div>
     </>

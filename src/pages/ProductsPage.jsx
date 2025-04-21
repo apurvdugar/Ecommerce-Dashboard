@@ -9,7 +9,6 @@ const ProductsPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
   const [sortBy, setSortBy] = useState('');
-  const [isFilterOpen, setIsFilterOpen] = useState(false);
 
   // Fetching products from the fake store API
   useEffect(() => {
@@ -91,13 +90,6 @@ const ProductsPage = () => {
           </div>
 
           <div className="flex space-x-2">
-            <button
-              onClick={() => setIsFilterOpen(!isFilterOpen)}
-              className="flex items-center px-4 py-2 bg-white border border-gray-300 rounded-md hover:bg-gray-50 md:hidden"
-            >
-              <Filter className="h-5 w-5 mr-1" />
-              Filters
-            </button>
 
             <select
               value={sortBy}
